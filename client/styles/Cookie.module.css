@@ -1,3 +1,13 @@
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  position: absolute;
+}
+
 .cookiecontainer {
   background: linear-gradient(260deg, #ffd700 0, #81c807 100%);
   color: #3d3d3d;
