@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Cookie from "@/components/cookie";
+import styles from "@/styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -10,12 +11,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Cookie />
-      <h1>Welcome!</h1>
-      <p>Made with Next.js</p>
-      <h2>AND</h2>
-      <p>Green Sock (gsap)</p>
-      <h2>Developed by</h2>
-      <p>Michael Cuccia</p>
+      <div className={styles.content}>
+        <h1>Welcome!</h1>
+        <p>Made with Next.js</p>
+        <h2>AND</h2>
+        <p>Green Sock (gsap)</p>
+        <h2>Developed by</h2>
+        <p>Michael Cuccia</p>
+      </div>
     </div>
   );
 }

@@ -88,7 +88,7 @@ export default function cookie() {
 
     tl.to(wrapper.current, {
       display: "none",
-      duration: 0.75,
+      duration: 0.5,
     });
   };
 
