@@ -1,0 +1,57 @@
+.cookiecontainer {
+  background: linear-gradient(260deg, #ffd700 0, #81c807 100%);
+  color: #3d3d3d;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  width: 30rem;
+  height: 15rem;
+  border-radius: 1.2rem;
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+  /* added for animations*/
+  overflow: hidden;
+}
+
+/* .cookie {
+  height: 90px;
+  width: 90px;
+} */
+
+.text {
+  width: 70%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cookietitle {
+  font-size: 24px;
+  font-weight: lighter;
+  padding-bottom: 10px;
+}
+
+.cookiesubtitle {
+  font-weight: bold;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+
+.legal {
+  font-size: 8px;
+  padding-bottom: 10px;
+}
+
+.buttonClass {
+  border-style: none;
+  padding: 0.5rem 1rem;
+  color: #3d3d3d;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 0.7rem;
+  border-radius: 0.3rem;
+}
