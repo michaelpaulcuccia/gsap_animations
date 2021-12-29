@@ -1,13 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import Head from "next/head";
-import { gsap } from "gsap/dist/gsap";
+import { gsap } from "gsap";
 import styles from "@/styles/Cookie.module.css";
 import goldenOreo from "../public/images/goldenOreo.svg";
 
 export default function Home() {
-  console.log(goldenOreo);
-
   const tlOne = gsap.timeline({
     defaults: {
       duration: 0.75,
@@ -16,7 +14,6 @@ export default function Home() {
   });
 
   const cookieContainer = useRef();
-  const cookie = useRef();
   const text = useRef();
   const button = useRef();
 
@@ -61,6 +58,34 @@ export default function Home() {
     );
   }, []);
 
+  const handleClick = () => {
+    const tl = gsap.timeline({
+      defaults: {
+        duration: 0.75,
+      },
+    });
+
+    tl.fromTo(
+      ".cookie",
+      {
+        y: 0,
+        rotation: "0deg",
+      },
+      {
+        rotation: "-270deg",
+        y: -3,
+        yoyo: true,
+        repeat: 2,
+      }
+    );
+
+    tl.to(cookieContainer.current, {
+      opacity: 0,
+      y: 100,
+      duration: 0.5,
+    });
+  };
+
   return (
     <div>
       <Head>
@@ -85,7 +110,11 @@ export default function Home() {
             choice.
           </p>
 
-          <button className={styles.buttonClass} ref={button}>
+          <button
+            className={styles.buttonClass}
+            ref={button}
+            onClick={handleClick}
+          >
             Accept Cookies
           </button>
         </div>

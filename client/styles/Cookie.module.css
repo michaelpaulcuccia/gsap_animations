@@ -16,11 +16,6 @@
   overflow: hidden;
 }
 
-/* .cookie {
-  height: 90px;
-  width: 90px;
-} */
-
 .text {
   width: 70%;
   margin-left: 10px;
@@ -54,4 +49,11 @@
   font-weight: bold;
   font-size: 0.7rem;
   border-radius: 0.3rem;
+  transition: background-color 0.75s ease-out;
+  transition: color 0.65s ease-in;
+}
+
+.buttonClass:hover {
+  background-color: #adadad;
+  color: #e0e0e0;
 }
