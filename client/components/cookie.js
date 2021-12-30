@@ -3,9 +3,8 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import styles from "@/styles/Cookie.module.css";
 import goldenOreo from "../public/images/goldenOreo.svg";
-import { normalizeConfig } from "next/dist/server/config-shared";
 
-export default function cookie() {
+const Cookie = () => {
   const wrapper = useRef();
   const cookieContainer = useRef();
   const text = useRef();
@@ -122,4 +121,6 @@ export default function cookie() {
       </div>
     </div>
   );
-}
+};
+
+export default Cookie;
