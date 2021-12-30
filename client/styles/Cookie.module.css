@@ -60,10 +60,43 @@
   font-size: 0.7rem;
   border-radius: 0.3rem;
   transition: background-color 0.75s ease-out;
-  transition: color 0.65s ease-in;
+  transition: color 0.25s ease-in;
+  cursor: pointer;
 }
 
 .buttonClass:hover {
   background-color: #adadad;
   color: #e0e0e0;
+}
+
+@media (max-width: 400px) {
+  .cookiecontainer {
+    height: 10rem;
+    width: 20rem;
+  }
+
+  .cookietitle {
+    font-size: 14px;
+    font-weight: lighter;
+    padding-bottom: 5px;
+  }
+
+  .cookiesubtitle {
+    font-weight: bold;
+    font-size: 10px;
+    padding-bottom: 5px;
+  }
+
+  .legal {
+    font-size: 6px;
+    padding-bottom: 5px;
+  }
+
+  .buttonClass {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.75s ease-out;
+    transition: color 0.25s ease-in;
+  }
 }
