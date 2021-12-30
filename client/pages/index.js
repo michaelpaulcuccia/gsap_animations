@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Cookie from "@/components/Cookie";
+import Cookie from "../components/Cookie";
 import styles from "@/styles/Home.module.css";
 
 export default function Home() {
