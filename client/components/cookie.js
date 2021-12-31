@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import styles from "@/styles/Cookie.module.css";
+import styles from "../styles/Cookie.module.css";
 import goldenOreo from "../public/images/goldenOreo.svg";
 
 const Cookie = () => {

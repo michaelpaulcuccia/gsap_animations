@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Cookie from "../components/Cookie.js";
-import styles from "@/styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
