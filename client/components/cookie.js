@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import styles from "../styles/Cookie.module.css";
 import goldenOreo from "../public/images/goldenOreo.svg";
 
-const Cookie = () => {
+export default function cookie() {
   const wrapper = useRef();
   const cookieContainer = useRef();
   const text = useRef();
@@ -121,6 +121,4 @@ const Cookie = () => {
       </div>
     </div>
   );
-};
-
-export default Cookie;
+}
