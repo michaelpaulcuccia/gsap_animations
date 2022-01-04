@@ -1,0 +1,185 @@
+ .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(90deg, #6190e8, #a7bfe8);
+  }
+  
+  .form {
+    min-height: 50vh;
+    width: 50vw;
+    background-color: #fff;
+    color: #777474;
+    border-radius: 2rem;
+    padding: 3rem 5rem;
+    display: flex;
+    position: relative;
+  }
+  
+  .title {
+    color: #6391e8;
+  }
+  
+  .contactRight,
+  .contactLeft {
+    flex: 1;
+  }
+  
+  .contactRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* on top of input-container */
+  .input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    border: none;
+    outline: none;
+    color: #777474;
+    font-size: .7rem;
+  }
+  
+  .inputContainer {
+    position: relative;
+  }
+  
+  /* on top of input */
+  .placeholder {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+    padding: 0.3rem 0;
+    font-size: 0.7rem;
+    opacity: 0.6;
+    /* modify for animation */
+    transform-origin: left;
+  }
+  
+  .lineSvg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: visible;
+    opacity: .8;
+  }
+  
+  .checkboxLabel {
+    font-size: 0.7rem;
+  }
+  
+  .promoContainer {
+    position: relative;
+    display: flex;
+  }
+  
+  .checkbox {
+    opacity: 0;
+    cursor: pointer;
+    /* fixes lower-right hand corner only click */
+    z-index: 3;
+  }
+  
+  .checkboxLabel {
+    padding-left: 0.5rem;
+  }
+  
+  /* fake div that looks like checkbox */
+  .checkboxContainer {
+    position: relative;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 3px;
+    /* hides .checkbox-fill */
+    overflow: hidden;
+  }
+  
+  /* on top of each other */
+  .checkmark,
+  .checkbox {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 2px solid #c5c5c5;
+  }
+  
+  .checkboxFill {
+    position: absolute;
+    background-color: #6190e8;
+    width: 100%;
+    height: 100%;
+    /* places fill below checkbox */
+    /* remove to see check */
+    top: 100%;
+  }
+  
+  .tickMark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.6);
+    z-index: 2;
+  }
+  
+  .button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 0.6rem;
+    background-color: #6190e8;
+    color: #fff;
+    border-radius: 0.2rem;
+    border-style: none;
+    padding: 0.5rem 2.5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    align-self: flex-start;
+  }
+  
+  #character {
+    position: absolute;
+    transform: scale(.6);
+    bottom: 0;
+    left: 0;
+  }
+  
+  .submitted {
+    position: absolute;
+    left: 350px;
+    top: 300px;
+    color: #777474;
+    font-size: 1rem;
+    pointer-events: none;
+    text-align: center;
+    opacity: 0;
+  }
+  
+  @media (max-width: 812px) {
+    .form {
+      width: 90vw;
+      min-height: 80vh;
+      flex-direction: column;
+      padding: 8rem 3rem;
+    }
+  
+    .lineSvg {
+      width: 100%;
+    }
+  
+    .submitted {
+      left: 75px;
+    }
+  
+    #character {
+      transform: scale(.4);
+      left: 120px;
+      bottom: -110px;
+    }
+  
+  }
