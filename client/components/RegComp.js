@@ -1,26 +1,60 @@
 import React, { useRef } from 'react';
-//import { gsap } from "gsap";
+import { gsap } from "gsap";
 import styles from "../styles/RegComp.module.css";
 
 export default function RegComp() {
 
-    const inputContainer = useRef();
-    const form = useRef();
-    const input = useRef();
-    const line = useRef();
-    const placeholder = useRef();
-    //const tl = gsap.timeline({ defaults: { duration: 1} });
+    //REFS
+    const lineName = useRef();
+    const lineEmail = useRef();
+    const linePassword = useRef();
+
+    const tlOne = gsap.timeline({ defaults: { duration: 1} });
 
     //LINE ANIMATION
-    //const start = "M0 0.999512C0 0.999512 60.5 0.999512 150 0.999512C239.5 0.999512 300 0.999512 300 0.999512";
-    //const end = 'M1 0.999512C1 0.999512 61.5 7.5 151 7.5C240.5 7.5 301 0.999512 301 0.999512';
+    const start = "M0 0.999512C0 0.999512 60.5 0.999512 150 0.999512C239.5 0.999512 300 0.999512 300 0.999512";
+    const end = 'M1 0.999512C1 0.999512 61.5 7.5 151 7.5C240.5 7.5 301 0.999512 301 0.999512';
 
-    console.log(inputContainer.current)
+    const handleFocus = (val) => {
+        if (val === 'Name') {
+            tlOne.fromTo(lineName.current, 
+                //https://greensock.com/docs/v3/GSAP/CorePlugins/AttrPlugin
+                {attr: {d: start}},
+                {attr: {d: end}, ease: 'Power2.easeOut', duration: .75},
+            );
+            tlOne.to(lineName.current, 
+                //'<50%' means run halfway through previous animation
+                {attr: {d: start}, ease: 'elastic.out(3, .5)'}, '<50%'
+            );
+        } else if (val === 'Email') {
+            tlOne.fromTo(lineEmail.current, 
+                //https://greensock.com/docs/v3/GSAP/CorePlugins/AttrPlugin
+                {attr: {d: start}},
+                {attr: {d: end}, ease: 'Power2.easeOut', duration: .75},
+            );
+            tlOne.to(lineEmail.current, 
+                //'<50%' means run halfway through previous animation
+                {attr: {d: start}, ease: 'elastic.out(3, .5)'}, '<50%'
+            );
+        } else if (val === 'Password') {
+            tlOne.fromTo(linePassword.current, 
+                //https://greensock.com/docs/v3/GSAP/CorePlugins/AttrPlugin
+                {attr: {d: start}},
+                {attr: {d: end}, ease: 'Power2.easeOut', duration: .75},
+            );
+            tlOne.to(linePassword.current, 
+                //'<50%' means run halfway through previous animation
+                {attr: {d: start}, ease: 'elastic.out(3, .5)'}, '<50%'
+            );
+        }     
+    }
+
+   
 
     return (
         <div className={styles.wrapper}>
         
-            <form className={styles.form} ref={form}>
+            <form className={styles.form}>
       
                 <div className={styles.contactLeft}>
                     <h1 className={styles.title}>Register</h1>
@@ -33,15 +67,15 @@ export default function RegComp() {
 
      
                 <div className={styles.contactRight}>
-                    <div className={styles.inputContainer} ref={inputContainer}>
-                        <p className={styles.placeholder} ref={placeholder}>Your Name</p>
+                    <div className={styles.inputContainer}>
+                        <p className={styles.placeholder}>Your Name</p>
                         <input
                             type="text"
-                            name="name"
+                            name="Name"
                             autoComplete="off"
                             className={styles.input}
-                            ref={input}
                             minLength='5'
+                            onFocus={(e) => handleFocus(e.target.name)}
                             required
                         />
                         <svg
@@ -54,23 +88,23 @@ export default function RegComp() {
                         >
                         <path
                             className={styles.elasticLine}
-                            ref={line}
                             d="M0 0.999512C0 0.999512 60.5 0.999512 150 0.999512C239.5 0.999512 300 0.999512 300 0.999512"
                             stroke="#D1D4DA"
                             strokeWidth="2"
+                            ref={lineName}
                         />
                     </svg>
                 </div>
 
-                <div className={styles.inputContainer} ref={inputContainer}>
-                    <p className={styles.placeholder} ref={placeholder}>Your Email</p>
+                <div className={styles.inputContainer}>
+                    <p className={styles.placeholder}>Your Email</p>
                     <input
                         type="email"
-                        name="email"
+                        name="Email"
                         autoComplete="off"
                         className={styles.input}
-                        ref={input}
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        onFocus={(e) => handleFocus(e.target.name)}
                         required
                     />
                     <svg
@@ -83,23 +117,23 @@ export default function RegComp() {
                     >
                     <path
                         className={styles.elasticLine}
-                        ref={line}
                         d="M0 0.999512C0 0.999512 60.5 0.999512 150 0.999512C239.5 0.999512 300 0.999512 300 0.999512"
                         stroke="#D1D4DA"
                         strokeWidth="2"
+                        ref={lineEmail}
                     />
                     </svg>
                 </div>
 
-                <div className={styles.inputContainer} ref={inputContainer}>
-                    <p className={styles.placeholder} ref={placeholder}>Your Password</p>
+                <div className={styles.inputContainer}>
+                    <p className={styles.placeholder}>Your Password</p>
                     <input
                         type="text"
-                        name="password"
+                        name="Password"
                         autoComplete="off"
                         className={styles.input}
-                        ref={input}
                         minLength='5'
+                        onFocus={(e) => handleFocus(e.target.name)}
                         required
                     />
                     <svg
@@ -112,10 +146,10 @@ export default function RegComp() {
                     >
                     <path
                         className={styles.elasticLine}
-                        ref={line}
                         d="M0 0.999512C0 0.999512 60.5 0.999512 150 0.999512C239.5 0.999512 300 0.999512 300 0.999512"
                         stroke="#D1D4DA"
                         strokeWidth="2"
+                        ref={linePassword}
                     />
                     </svg>
                 </div>
@@ -135,7 +169,6 @@ export default function RegComp() {
                         >
                         <path
                             className={styles.elasticLine}
-                            ref={line}
                             d="M2 8.5L6.5 13L17.5 2"
                             stroke="white"
                             strokeWidth="4"

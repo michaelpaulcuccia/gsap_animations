@@ -2,6 +2,8 @@
 https://stackoverflow.com/questions/68163385/parsing-error-cannot-find-module-next-babel
 */
 
+// https://stackoverflow.com/questions/43177074/how-to-fix-this-violation-of-this-react-no-unescaped-entitie-of-eslint-rule
+
 {
   "extends": "next/core-web-vitals",
   "rules": {"react/no-unescaped-entities": 0 }
