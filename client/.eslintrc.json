@@ -3,5 +3,6 @@ https://stackoverflow.com/questions/68163385/parsing-error-cannot-find-module-ne
 */
 
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {"react/no-unescaped-entities": 0 }
 }
