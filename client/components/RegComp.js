@@ -1,14 +1,23 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { gsap } from "gsap";
 import styles from "../styles/RegComp.module.css";
 
 export default function RegComp() {
 
+    const [nameState, setNameState] = useState(false);
+    const [emailState, setEmailState] = useState(false);
+    const [passwordState, setPasswordState] = useState(false);
+
     //REFS
     const lineName = useRef();
     const lineEmail = useRef();
     const linePassword = useRef();
+    const placeholderName = useRef();
+    const placeholderEmail = useRef();
+    const placeholderPassword = useRef();
 
+
+    //ANIMATION TIMELINE
     const tlOne = gsap.timeline({ defaults: { duration: 1} });
 
     //LINE ANIMATION
@@ -17,35 +26,69 @@ export default function RegComp() {
 
     const handleFocus = (val) => {
         if (val === 'Name') {
-            tlOne.fromTo(lineName.current, 
-                //https://greensock.com/docs/v3/GSAP/CorePlugins/AttrPlugin
-                {attr: {d: start}},
-                {attr: {d: end}, ease: 'Power2.easeOut', duration: .75},
-            );
-            tlOne.to(lineName.current, 
-                //'<50%' means run halfway through previous animation
-                {attr: {d: start}, ease: 'elastic.out(3, .5)'}, '<50%'
-            );
+            //if already active, revert text position
+            if (nameState) {
+                gsap.to(placeholderName.current, 
+                    {top: 0, left: 0, scale: 1, duration: .5, ease: "Power2.easeout"}
+                );
+                //set State back
+                setNameState(false);
+            } else {
+                tlOne.fromTo(lineName.current, 
+                    //https://greensock.com/docs/v3/GSAP/CorePlugins/AttrPlugin
+                    {attr: {d: start}},
+                    {attr: {d: end}, ease: 'Power2.easeOut', duration: .75},
+                );
+                tlOne.to(lineName.current, 
+                    //'<50%' means run halfway through previous animation
+                    {attr: {d: start}, ease: 'elastic.out(3, .5)'}, '<50%'
+                );
+                 //placeholder shift
+                //'<15%' means run fifteen percent through previous animation
+                tlOne.to(placeholderName.current, 
+                    {top: -15, left: 0, scale: .7, duration: .5, ease: 'Power2.easeOut'}, "<15%"
+                );
+                //update State
+                setNameState(true);
+            }
         } else if (val === 'Email') {
-            tlOne.fromTo(lineEmail.current, 
-                //https://greensock.com/docs/v3/GSAP/CorePlugins/AttrPlugin
-                {attr: {d: start}},
-                {attr: {d: end}, ease: 'Power2.easeOut', duration: .75},
-            );
-            tlOne.to(lineEmail.current, 
-                //'<50%' means run halfway through previous animation
-                {attr: {d: start}, ease: 'elastic.out(3, .5)'}, '<50%'
-            );
+            if (emailState) {
+                gsap.to(placeholderEmail.current, 
+                    {top: 0, left: 0, scale: 1, duration: .5, ease: "Power2.easeout"}
+                );
+                setEmailState(false);
+            } else {
+                tlOne.fromTo(lineEmail.current, 
+                    {attr: {d: start}},
+                    {attr: {d: end}, ease: 'Power2.easeOut', duration: .75},
+                );
+                tlOne.to(lineEmail.current, 
+                    {attr: {d: start}, ease: 'elastic.out(3, .5)'}, '<50%'
+                );
+                tlOne.to(placeholderEmail.current, 
+                    {top: -15, left: 0, scale: .7, duration: .5, ease: 'Power2.easeOut'}, "<15%"
+                );
+                setEmailState(true);
+            }
         } else if (val === 'Password') {
-            tlOne.fromTo(linePassword.current, 
-                //https://greensock.com/docs/v3/GSAP/CorePlugins/AttrPlugin
-                {attr: {d: start}},
-                {attr: {d: end}, ease: 'Power2.easeOut', duration: .75},
-            );
-            tlOne.to(linePassword.current, 
-                //'<50%' means run halfway through previous animation
-                {attr: {d: start}, ease: 'elastic.out(3, .5)'}, '<50%'
-            );
+            if (passwordState) {
+                gsap.to(placeholderPassword.current, 
+                    {top: 0, left: 0, scale: 1, duration: .5, ease: "Power2.easeout"}
+                );
+                setPasswordState(false);
+            } else {
+                tlOne.fromTo(linePassword.current, 
+                    {attr: {d: start}},
+                    {attr: {d: end}, ease: 'Power2.easeOut', duration: .75},
+                );
+                tlOne.to(linePassword.current, 
+                    {attr: {d: start}, ease: 'elastic.out(3, .5)'}, '<50%'
+                );
+                tlOne.to(placeholderPassword.current, 
+                    {top: -15, left: 0, scale: .7, duration: .5, ease: 'Power2.easeOut'}, "<15%"
+                );
+                setPasswordState(true)
+            }
         }     
     }
 
@@ -68,7 +111,12 @@ export default function RegComp() {
      
                 <div className={styles.contactRight}>
                     <div className={styles.inputContainer}>
-                        <p className={styles.placeholder}>Your Name</p>
+                        <p 
+                            className={styles.placeholder}
+                            ref={placeholderName}
+                        >
+                            Your Name
+                        </p>
                         <input
                             type="text"
                             name="Name"
@@ -97,7 +145,12 @@ export default function RegComp() {
                 </div>
 
                 <div className={styles.inputContainer}>
-                    <p className={styles.placeholder}>Your Email</p>
+                    <p 
+                        className={styles.placeholder}
+                        ref={placeholderEmail}
+                    >
+                        Your Email
+                    </p>
                     <input
                         type="email"
                         name="Email"
@@ -126,7 +179,12 @@ export default function RegComp() {
                 </div>
 
                 <div className={styles.inputContainer}>
-                    <p className={styles.placeholder}>Your Password</p>
+                    <p 
+                        className={styles.placeholder}
+                        ref={placeholderPassword}
+                    >
+                        Your Password
+                    </p>
                     <input
                         type="text"
                         name="Password"
