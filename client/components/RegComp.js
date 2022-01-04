@@ -3,7 +3,7 @@ import styles from "../styles/RegComp.module.css";
 
 export default function RegComp() {
     return (
-        <div className='wrapper'>
+        <div className={styles.wrapper}>
         
             <form className={styles.form}>
       
@@ -136,6 +136,7 @@ export default function RegComp() {
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg" 
                 id="character"
+                className={styles.character}
                 >
                 <g id="imagebot_2">
                 <path id="imagebot_43" d="M59.0941 290.603C59.6595 292.277 57.4273 355.837 57.4273 355.837L89.7652 358.069L93.1135 287.262L59.0941 290.603Z" fill="#EFA512"/>

@@ -14,8 +14,8 @@
     color: #777474;
     border-radius: 2rem;
     padding: 3rem 5rem;
-    display: flex;
     position: relative;
+    display: flex;
   }
   
   .title {
@@ -142,7 +142,7 @@
     align-self: flex-start;
   }
   
-  #character {
+  .character {
     position: absolute;
     transform: scale(.6);
     bottom: 0;
@@ -176,7 +176,7 @@
       left: 75px;
     }
   
-    #character {
+    .character {
       transform: scale(.4);
       left: 120px;
       bottom: -110px;
