@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from "../styles/Register.module.css";
+import styles from "../styles/RegComp.module.css";
 
-export default function Register() {
+export default function RegComp() {
     return (
         <div className='wrapper'>
         
@@ -38,10 +38,10 @@ export default function Register() {
                             xmlns="http://www.w3.org/2000/svg"
                         >
                         <path
-                        className={styles.elasticLine}
-                        d="M0 0.999512C0 0.999512 60.5 0.999512 150 0.999512C239.5 0.999512 300 0.999512 300 0.999512"
-                        stroke="#D1D4DA"
-                        stroke-width="2"
+                            className={styles.elasticLine}
+                            d="M0 0.999512C0 0.999512 60.5 0.999512 150 0.999512C239.5 0.999512 300 0.999512 300 0.999512"
+                            stroke="#D1D4DA"
+                            stroke-width="2"
                         />
                     </svg>
                 </div>
@@ -108,12 +108,12 @@ export default function Register() {
                         <div className={styles.checkboxFill}></div>
                         <input type="checkbox" className={styles.checkbox}/>
                         <svg
-                        width="19"
-                        height="16"
-                        viewBox="0 0 19 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className={styles.tickMark}
+                            width="19"
+                            height="16"
+                            viewBox="0 0 19 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className={styles.tickMark}
                         >
                         <path
                             className={styles.elasticLine}

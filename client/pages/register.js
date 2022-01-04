@@ -1,10 +1,10 @@
 import React from 'react';
-import Register from '../components/Register';
+import RegComp from '../components/RegComp';
 
 export default function testpage() {
     return (
         <div>
-            <Register />
+            <RegComp />
         </div>
     )
 }
