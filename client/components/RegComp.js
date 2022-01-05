@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { gsap } from "gsap";
+import AuthContext from '../context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from "../styles/RegComp.module.css";
@@ -129,16 +130,19 @@ export default function RegComp() {
         }         
     }
 
-    const handleSubmit = (event) => {
+    //AUTH CONTEXT
+    const { register } = useContext(AuthContext);
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
         //Field Validations
         if (username === '' || email === '' || password === ''){   
             toast.error('Please complete form')
             return;
         } else {
-            //Create User Object 
-            const newRegisteredUser = {username, email, password, sendPromotions};
-            console.log(newRegisteredUser)
+            //Pass form fields to Auth
+            const user = {username, email, password, sendPromotions}
+            register(user);
             //Clear State
             setUsername('');
             setEmail('');
