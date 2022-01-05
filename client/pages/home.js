@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import Head from "next/head";
+import Link from 'next/link';
 import { gsap } from "gsap";
 import styles from "../styles/Home.module.css";
 
@@ -39,19 +40,19 @@ export default function Home() {
         <div className={styles.linkWindow} ref={linkWindow}>
             <ul className={styles.linkUL}>
               <li>
-                <a className={styles.anchors} href='/register'>
+                <Link className={styles.anchors} href='/register'>
                   Register
-                </a>
+                </Link>
                </li>
               <li>
-                <a className={styles.anchors} href='/login'>
+                <Link className={styles.anchors} href='/login'>
                   Login
-                </a>
+                </Link>
                </li>
               <li>
-                <a className={styles.anchors} href='/about'>
+                <Link className={styles.anchors} href='/about'>
                   About
-                </a>
+                </Link>
                </li>
             </ul>
         </div>
