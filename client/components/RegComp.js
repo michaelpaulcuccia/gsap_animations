@@ -7,6 +7,7 @@ export default function RegComp() {
     const [nameState, setNameState] = useState(false);
     const [emailState, setEmailState] = useState(false);
     const [passwordState, setPasswordState] = useState(false);
+    const [checkboxClicked, setCheckboxClicked] = useState(false);
 
     //REFS
     const lineName = useRef();
@@ -15,16 +16,18 @@ export default function RegComp() {
     const placeholderName = useRef();
     const placeholderEmail = useRef();
     const placeholderPassword = useRef();
-
-
-    //ANIMATION TIMELINE
+    const checkboxFill = useRef();
+     
+    //ANIMATION TIMELINES
     const tlOne = gsap.timeline({ defaults: { duration: 1} });
+    const tlTwo = gsap.timeline({defaults: { duration: .5, ease: 'Power2.eastOut'} });
 
     //LINE ANIMATION
     const start = "M0 0.999512C0 0.999512 60.5 0.999512 150 0.999512C239.5 0.999512 300 0.999512 300 0.999512";
     const end = 'M1 0.999512C1 0.999512 61.5 7.5 151 7.5C240.5 7.5 301 0.999512 301 0.999512';
 
-    //NOTE: GSAP will NOT accept template strings ex: ${`val`.current} so function needs to be repetitive
+    //INPUT FOCUS 
+    //NOTE: GSAP will NOT accept ref template strings ex: ${`val`.current} so function needs to be repetitive
     const handleFocus = (val) => {
         if (val === 'Name') {
             //if already active, revert text position
@@ -93,8 +96,20 @@ export default function RegComp() {
         }     
     }
 
-   
-
+    const handleCheckboxClick = () => {
+        if(!checkboxClicked) {
+            tlTwo.to(checkboxFill.current, 
+                {top: "0%"}
+            );
+            setCheckboxClicked(true);
+        } else {
+            tlTwo.to(checkboxFill.current, 
+                {top: "100%"}
+            );
+            setCheckboxClicked(false)
+        }         
+    }
+    
     return (
         <div className={styles.wrapper}>
         
@@ -216,8 +231,12 @@ export default function RegComp() {
                 <div className={styles.promoContainer}>
                     <div className={styles.checkboxContainer}>
                         <span className={styles.checkmark}></span>
-                        <div className={styles.checkboxFill}></div>
-                        <input type="checkbox" className={styles.checkbox}/>
+                        <div className={styles.checkboxFill} ref={checkboxFill}></div>
+                        <input 
+                            type="checkbox" 
+                            className={styles.checkbox}
+                            onClick={handleCheckboxClick}
+                        />
                         <svg
                             width="19"
                             height="16"
@@ -260,8 +279,8 @@ export default function RegComp() {
                 <path id="imagebot_36" d="M118.948 182.56C173.554 182.56 217.821 141.72 217.821 91.3399C217.821 40.9602 173.554 0.119446 118.948 0.119446C64.3418 0.119446 20.0748 40.9602 20.0748 91.3399C20.0748 141.72 64.3418 182.56 118.948 182.56Z" fill="#FDD89A"/>
                 <path id="imagebot_35" d="M17.9618 121.209C27.0447 121.209 34.4078 113.595 34.4078 104.202C34.4078 94.8094 27.0447 87.1951 17.9618 87.1951C8.87899 87.1951 1.5159 94.8094 1.5159 104.202C1.5159 113.595 8.87899 121.209 17.9618 121.209Z" fill="#FDD89A"/>
                 <path id="imagebot_34" d="M214.286 110.604C225.987 110.604 235.473 102.492 235.473 92.4857C235.473 82.4794 225.987 74.3676 214.286 74.3676C202.585 74.3676 193.099 82.4794 193.099 92.4857C193.099 102.492 202.585 110.604 214.286 110.604Z" fill="#FDD89A" stroke="#FDD89A" strokeWidth="2.8608"/>
-                <path id="imagebot_33" className={styles.eyes} d="M94.4262 122.487C101.971 122.487 108.087 117.373 108.087 111.064C108.087 104.755 101.971 99.6404 94.4262 99.6404C86.8818 99.6404 80.7657 104.755 80.7657 111.064C80.7657 117.373 86.8818 122.487 94.4262 122.487Z" fill="black"/>
-                <path id="imagebot_32" className={styles.eyes} d="M149.671 122.397C157.369 122.397 163.609 116.533 163.609 109.3C163.609 102.066 157.369 96.2021 149.671 96.2021C141.974 96.2021 135.734 102.066 135.734 109.3C135.734 116.533 141.974 122.397 149.671 122.397Z" fill="black"/>
+                <path id="imagebot_33" d="M94.4262 122.487C101.971 122.487 108.087 117.373 108.087 111.064C108.087 104.755 101.971 99.6404 94.4262 99.6404C86.8818 99.6404 80.7657 104.755 80.7657 111.064C80.7657 117.373 86.8818 122.487 94.4262 122.487Z" fill="black"/>
+                <path id="imagebot_32" d="M149.671 122.397C157.369 122.397 163.609 116.533 163.609 109.3C163.609 102.066 157.369 96.2021 149.671 96.2021C141.974 96.2021 135.734 102.066 135.734 109.3C135.734 116.533 141.974 122.397 149.671 122.397Z" fill="black"/>
                 <path id="imagebot_29" d="M121.61 146.652L123.656 147.826C128.087 150.371 135.158 154.391 136.485 155.031L132.793 158.713C131.29 157.997 124.992 154.417 121.615 152.475L108.278 160.89L104.175 157.648L121.61 146.652Z" fill="black"/>
                 <path id="imagebot_22" d="M17.7175 74.8482L70.6815 73.7394L93.5398 43.6264L87.9665 74.2975C87.9665 74.2975 182.741 49.2069 222.884 59.8027C263.028 70.3984 201.142 -8.21419 106.926 0.707378C106.918 0.700035 36.6694 7.38937 17.7175 74.8482V74.8482Z" fill="black"/>
                 <g id="imagebot_18">
