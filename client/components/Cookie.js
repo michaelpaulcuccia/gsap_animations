@@ -1,21 +1,28 @@
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from 'next/router';
 import { gsap } from "gsap";
 import styles from "../styles/Cookie.module.css";
 import goldenOreo from "../public/images/goldenOreo.svg";
 
 export default function Cookie() {
+
+  //REFS
   const wrapper = useRef();
   const cookieContainer = useRef();
   const text = useRef();
   const button = useRef();
 
+  //ANIMATION TIMELINE
   const tlOne = gsap.timeline({
     defaults: {
       duration: 0.75,
       ease: "power1.out",
     },
   });
+
+  //ROUTER
+  const router = useRouter();
 
   useEffect(() => {
     //ENTRANCE ANIMATIONS
@@ -59,6 +66,7 @@ export default function Cookie() {
   }, []);
 
   const handleClick = () => {
+
     const tl = gsap.timeline({
       defaults: {
         duration: 0.75,
@@ -89,6 +97,12 @@ export default function Cookie() {
       display: "none",
       duration: 0.5,
     });
+
+    //UPDATE ROUTE LATER, FOR NOW PUSH TO REGISTER PAGE
+    //TIMEOUT NECESSARY FOR ANIMATIONS
+    setTimeout(() => {
+      router.push('/register');
+    }, 2700);
   };
 
   return (

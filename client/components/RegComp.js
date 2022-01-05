@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { gsap } from "gsap";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from "../styles/RegComp.module.css";
 
 export default function RegComp() {
@@ -129,45 +131,52 @@ export default function RegComp() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        //Create User Object 
-        const newRegisteredUser = {username, email, password, sendPromotions};
-        console.log(newRegisteredUser)
-        //Clear State
-        setUsername('');
-        setEmail('');
-        setPassword('');
-        setSendPromotions(false);
-        //FORM ANIMATIONS
-        tlThree.to([contactLeft.current, contactRight.current], 
-            {y: 30, opacity: 0, pointerEvents: 'none'}
-        );
-        tlThree.to(form.current, 
-            {scale: .8}, '<'
-        );
-        tlThree.fromTo(submitted.current,
-            {opacity: 0, y: 30},
-            {opacity: 1, y:0}
-        );
-        //CHARACTER ANIMATIONS
-        gsap.fromTo('#arm', 
-            {rotation: 0, y:0},
-            {rotation: -35, y:2, ease: "elastic(3, .3)", duration: 2, delay: 1}
-        );
+        //Field Validations
+        if (username === '' || email === '' || password === ''){   
+            toast.error('Please complete form')
+            return;
+        } else {
+            //Create User Object 
+            const newRegisteredUser = {username, email, password, sendPromotions};
+            console.log(newRegisteredUser)
+            //Clear State
+            setUsername('');
+            setEmail('');
+            setPassword('');
+            setSendPromotions(false);
+            //FORM ANIMATIONS
+            tlThree.to([contactLeft.current, contactRight.current], 
+                {y: 30, opacity: 0, pointerEvents: 'none'}
+            );
+            tlThree.to(form.current, 
+                {scale: .8}, '<'
+            );
+            tlThree.fromTo(submitted.current,
+                {opacity: 0, y: 30},
+                {opacity: 1, y:0}
+            );
+            //CHARACTER ANIMATIONS
+            gsap.fromTo('#arm', 
+                {rotation: 0, y:0},
+                {rotation: -35, y:2, ease: "elastic(3, .3)", duration: 2, delay: 1}
+            );
+        }
+        
     }
 
     useEffect(() => {
-        gsap.set('.eyes', 
-            {transformOrigin: 'center'}
-        );
-        gsap.fromTo('.eyes', 
-            {scaleY: 1},
-            {scaleY: .1, repeat: -1, yoyo: true, repeatDelay: 1.5, ease: "Power2.easeOut"}
-        );
+        // gsap.set('.eyes', 
+        //     {transformOrigin: 'center'}
+        // );
+        // gsap.fromTo('.eyes', 
+        //     {scaleY: 1},
+        //     {scaleY: .1, repeat: -1, yoyo: true, repeatDelay: 1.5, ease: "Power2.easeOut"}
+        // );
     })
-    
+            
     return (
         <div className={styles.wrapper}>
-        
+             <ToastContainer />
             <form 
                 className={styles.form}
                 ref={form}
