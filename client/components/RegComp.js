@@ -8,6 +8,11 @@ export default function RegComp() {
     const [emailState, setEmailState] = useState(false);
     const [passwordState, setPasswordState] = useState(false);
     const [checkboxClicked, setCheckboxClicked] = useState(false);
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [sendPromotions, setSendPromotions] = useState(false);
+
 
     //REFS
     const lineName = useRef();
@@ -17,10 +22,16 @@ export default function RegComp() {
     const placeholderEmail = useRef();
     const placeholderPassword = useRef();
     const checkboxFill = useRef();
-     
+    const checkboxLabel = useRef();
+    const contactLeft = useRef();
+    const contactRight = useRef();
+    const form = useRef();
+    const submitted = useRef();
+
     //ANIMATION TIMELINES
     const tlOne = gsap.timeline({ defaults: { duration: 1} });
     const tlTwo = gsap.timeline({defaults: { duration: .5, ease: 'Power2.eastOut'} });
+    const tlThree = gsap.timeline({defaults: {duration: .75, ease: 'Power2.easeOut'}});
 
     //LINE ANIMATION
     const start = "M0 0.999512C0 0.999512 60.5 0.999512 150 0.999512C239.5 0.999512 300 0.999512 300 0.999512";
@@ -101,21 +112,62 @@ export default function RegComp() {
             tlTwo.to(checkboxFill.current, 
                 {top: "0%"}
             );
+            tlTwo.to(checkboxLabel.current, 
+                {color: '#6391e8'}
+            );
             setCheckboxClicked(true);
+            setSendPromotions(true);
         } else {
             tlTwo.to(checkboxFill.current, 
                 {top: "100%"}
             );
+            tlTwo.to(checkboxLabel.current, 
+                {color: '#777474'}
+            );
             setCheckboxClicked(false)
         }         
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        //Create User Object 
+        const newRegisteredUser = {username, email, password, sendPromotions};
+        console.log(newRegisteredUser)
+        //Clear State
+        setUsername('');
+        setEmail('');
+        setPassword('');
+        setSendPromotions(false);
+        //FORM ANIMATIONS
+        tlThree.to([contactLeft.current, contactRight.current], 
+            {y: 30, opacity: 0, pointerEvents: 'none'}
+        );
+        tlThree.to(form.current, 
+            {scale: .8}, '<'
+        );
+        tlThree.fromTo(submitted.current,
+            {opacity: 0, y: 30},
+            {opacity: 1, y:0}
+        );
+        //CHARACTER ANIMATIONS
+        gsap.fromTo('#arm', 
+            {rotation: 0, y:0},
+            {rotation: -35, y:2, ease: "elastic(3, .3)", duration: 2, delay: 1}
+        );
     }
     
     return (
         <div className={styles.wrapper}>
         
-            <form className={styles.form}>
+            <form 
+                className={styles.form}
+                ref={form}
+            >
       
-                <div className={styles.contactLeft}>
+                <div 
+                    className={styles.contactLeft}
+                    ref={contactLeft}
+                >
                     <h1 className={styles.title}>Register</h1>
                     <p className={styles.description}>
                         Sign up!<br></br>
@@ -125,7 +177,10 @@ export default function RegComp() {
                 </div>
 
      
-                <div className={styles.contactRight}>
+                <div 
+                    className={styles.contactRight}
+                    ref={contactRight}
+                >
                     <div className={styles.inputContainer}>
                         <p 
                             className={styles.placeholder}
@@ -140,6 +195,7 @@ export default function RegComp() {
                             className={styles.input}
                             minLength='5'
                             onFocus={(e) => handleFocus(e.target.name)}
+                            onChange={(event) => setUsername(event.target.value)}
                             required
                         />
                         <svg
@@ -174,6 +230,7 @@ export default function RegComp() {
                         className={styles.input}
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                         onFocus={(e) => handleFocus(e.target.name)}
+                        onChange={(event) => setEmail(event.target.value)}
                         required
                     />
                     <svg
@@ -208,6 +265,7 @@ export default function RegComp() {
                         className={styles.input}
                         minLength='5'
                         onFocus={(e) => handleFocus(e.target.name)}
+                        onChange={(event) => setPassword(event.target.value)}
                         required
                     />
                     <svg
@@ -253,10 +311,20 @@ export default function RegComp() {
                         />
                         </svg>
                     </div>
-                    <label className={styles.checkboxLabel}>Send me promotions and offers.</label>
+                    <label 
+                        className={styles.checkboxLabel}
+                        ref={checkboxLabel}
+                    >
+                        Send me promotions and offers.
+                    </label>
                 </div>
         
-                <button className={styles.button}>Register</button>
+                <button 
+                    className={styles.button}
+                    onClick={handleSubmit}
+                >
+                    Register
+                </button>
             </div>
 
             <svg 
@@ -296,7 +364,10 @@ export default function RegComp() {
                 </g>
             </svg>
 
-            <div className={styles.submitted}>
+            <div 
+                className={styles.submitted}
+                ref={submitted}
+            >
                 <p>Thanks for registering!</p>
                 <p>You'll hear from us soon!</p>
             </div>
