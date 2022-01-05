@@ -93,10 +93,9 @@ export default function Cookie() {
       display: "none",
       duration: 0.5,
     });
-    //UPDATE ROUTE LATER, FOR NOW PUSH TO REGISTER PAGE
     //TIMEOUT NECESSARY FOR ANIMATIONS
     setTimeout(() => {
-      router.push('/register');
+      router.push('/home');
     }, 2700);
   };
 
