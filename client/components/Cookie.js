@@ -35,7 +35,6 @@ export default function Cookie() {
         scale: 1,
       }
     );
-
     tlOne.fromTo(
       ".cookie",
       {
@@ -49,7 +48,6 @@ export default function Cookie() {
         rotation: "0deg",
       }
     );
-
     tlOne.fromTo(
       text.current,
       {
@@ -66,13 +64,13 @@ export default function Cookie() {
   }, []);
 
   const handleClick = () => {
-
+    //TIMELINE
     const tl = gsap.timeline({
       defaults: {
         duration: 0.75,
       },
     });
-
+    //ANIMATIONS
     tl.fromTo(
       ".cookie",
       {
@@ -86,18 +84,15 @@ export default function Cookie() {
         repeat: 2,
       }
     );
-
     tl.to(cookieContainer.current, {
       opacity: 0,
       y: 100,
       duration: 0.5,
     });
-
     tl.to(wrapper.current, {
       display: "none",
       duration: 0.5,
     });
-
     //UPDATE ROUTE LATER, FOR NOW PUSH TO REGISTER PAGE
     //TIMEOUT NECESSARY FOR ANIMATIONS
     setTimeout(() => {

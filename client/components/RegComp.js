@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { gsap } from "gsap";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -164,7 +164,7 @@ export default function RegComp() {
         
     }
 
-    useEffect(() => {
+    //useEffect(() => {
         // gsap.set('.eyes', 
         //     {transformOrigin: 'center'}
         // );
@@ -172,7 +172,7 @@ export default function RegComp() {
         //     {scaleY: 1},
         //     {scaleY: .1, repeat: -1, yoyo: true, repeatDelay: 1.5, ease: "Power2.easeOut"}
         // );
-    })
+    //})
             
     return (
         <div className={styles.wrapper}>
