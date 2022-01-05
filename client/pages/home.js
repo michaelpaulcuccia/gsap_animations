@@ -38,23 +38,15 @@ export default function Home() {
       </Head>
       <div className={styles.wrapper}>
         <div className={styles.linkWindow} ref={linkWindow}>
-            <ul className={styles.linkUL}>
-              <li>
-                <Link className={styles.anchors} href='/register'>
-                  Register
+                <Link href='/register'>
+                  <span className={styles.linkText}>Register</span>
                 </Link>
-               </li>
-              <li>
-                <Link className={styles.anchors} href='/login'>
-                  Login
-                </Link>
-               </li>
-              <li>
-                <Link className={styles.anchors} href='/about'>
-                  About
-                </Link>
-               </li>
-            </ul>
+                <Link href='/login'>
+                  <span className={styles.linkText}>Login</span>
+                </Link>              
+                <Link href='/about'>
+                  <span className={styles.linkText}>About</span>
+                </Link>              
         </div>
       </div>
     </div>

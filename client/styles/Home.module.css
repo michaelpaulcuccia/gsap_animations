@@ -17,20 +17,9 @@
   align-items: center;
 }
 
-.linkUL li {
-  list-style: none;
-  color: #fff;
-  padding: 50px 0;
-  font-size: 30px;
-}
-
-.anchors {
-  text-decoration: none;
-  color: #fff;
+.linkText {
   cursor: pointer;
-  transition: color 0.5s ease-in;
-}
-
-.anchors:hover {
-  color: #adadad;
+  font-size: 30px;
+  color: #fff;
+  padding: 35px 0;
 }
