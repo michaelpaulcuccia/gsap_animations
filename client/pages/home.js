@@ -37,6 +37,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.wrapper}>
+        <div className={styles.logoContainer}></div>
         <div className={styles.linkWindow} ref={linkWindow}>
                 <Link href='/register'>
                   <span className={styles.linkText}>Register</span>

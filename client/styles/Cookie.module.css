@@ -4,12 +4,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000000;
+  background-color: #007ab3;
   position: absolute;
 }
 
 .cookiecontainer {
-  background: linear-gradient(260deg, #ffd700 0, #81c807 100%);
+  /* background: linear-gradient(260deg, #ffd700 0, #81c807 100%); */
+  background-color: #b3e7ff;
   color: #3d3d3d;
   position: absolute;
   top: 20%;
@@ -65,8 +66,8 @@
 }
 
 .buttonClass:hover {
-  background-color: #adadad;
-  color: #e0e0e0;
+  background-color: #02afff;
+  color: #fff;
 }
 
 @media (max-width: 400px) {
