@@ -23,18 +23,18 @@ export default function Home() {
   const handleMenuClick = () => {
     console.log('click')
     if(!showLinkWindow) {
-      tlOne.fromTo(
-        linkWindow.current,
-        {
-          opacity: 0,
-          x: 250,
-        },
-        {
-          opacity: 1,
-          x: 0,
-        }
-      );
-      setShowLinkWindow(true)
+        tlOne.fromTo(
+          linkWindow.current,
+          {
+            opacity: 0,
+            x: 250,
+          },
+          {
+            opacity: 1,
+            x: 0,
+          }
+        );
+        setShowLinkWindow(true)
     } else {
       tlOne.fromTo(
         linkWindow.current,
@@ -51,7 +51,6 @@ export default function Home() {
     }
   }
 
-
   return (
     <div>
       <Head>
@@ -62,8 +61,7 @@ export default function Home() {
       <div className={styles.wrapper}>
         <div className={styles.logoContainer}></div>
         <button onClick={handleMenuClick}>MENU</button>
-        {
-          setShowLinkWindow &&
+            {/* LINK WINDOW OPACITY: 0 */}
             <div className={styles.linkWindow} ref={linkWindow}>
             <Link href='/register'>
               <span className={styles.linkText}>Register</span>
@@ -75,7 +73,6 @@ export default function Home() {
               <span className={styles.linkText}>About</span>
             </Link>              
           </div>
-        }
       </div>
     </div>
   );

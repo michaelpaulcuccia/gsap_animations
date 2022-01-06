@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from 'next/router';
 import { gsap } from "gsap";
 import styles from "../styles/Cookie.module.css";
-import goldenOreo from "../public/images/goldenOreo.svg";
+import cookie from "../public/images/cookie.svg";
 
 export default function Cookie() {
 
@@ -78,10 +78,8 @@ export default function Cookie() {
         rotation: "0deg",
       },
       {
-        rotation: "-270deg",
+        rotation: "-360deg",
         y: -3,
-        yoyo: true,
-        repeat: 2,
       }
     );
     tl.to(cookieContainer.current, {
@@ -102,7 +100,7 @@ export default function Cookie() {
   return (
     <div className={styles.wrapper} ref={wrapper}>
       <div className={styles.cookiecontainer} ref={cookieContainer}>
-        <Image src={goldenOreo} width={90} height={90} className="cookie" />
+        <Image src={cookie} width={90} height={90} className="cookie" />
 
         <div className={styles.text} ref={text}>
           <h2 className={styles.cookietitle}>Cookie Policy</h2>
