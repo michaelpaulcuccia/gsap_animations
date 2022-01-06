@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Head from "next/head";
 import Link from 'next/link';
 import { gsap } from "gsap";
@@ -6,6 +6,13 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
 
+  //STATE
+  const [showLinkWindow, setShowLinkWindow] = useState(false);
+
+  //REFS
+  const linkWindow = useRef();
+
+  //LINK WINDOW ANIMATION
   const tlOne = gsap.timeline({
     defaults: {
       duration: 1.5,
@@ -13,21 +20,37 @@ export default function Home() {
     },
   });
 
-  const linkWindow = useRef();
+  const handleMenuClick = () => {
+    console.log('click')
+    if(!showLinkWindow) {
+      tlOne.fromTo(
+        linkWindow.current,
+        {
+          opacity: 0,
+          x: 250,
+        },
+        {
+          opacity: 1,
+          x: 0,
+        }
+      );
+      setShowLinkWindow(true)
+    } else {
+      tlOne.fromTo(
+        linkWindow.current,
+        {
+          opacity: 1,
+          x: 0,
+        },
+        {
+          opacity: 0,
+          x: 250,
+        }
+      );
+      setShowLinkWindow(false);
+    }
+  }
 
-  useEffect(() => {
-    tlOne.fromTo(
-      linkWindow.current,
-      {
-        opacity: 0,
-        x: 250,
-      },
-      {
-        opacity: 1,
-        x: 0,
-      }
-    );
-  }); 
 
   return (
     <div>
@@ -38,17 +61,21 @@ export default function Home() {
       </Head>
       <div className={styles.wrapper}>
         <div className={styles.logoContainer}></div>
-        <div className={styles.linkWindow} ref={linkWindow}>
-                <Link href='/register'>
-                  <span className={styles.linkText}>Register</span>
-                </Link>
-                <Link href='/login'>
-                  <span className={styles.linkText}>Login</span>
-                </Link>              
-                <Link href='/about'>
-                  <span className={styles.linkText}>About</span>
-                </Link>              
-        </div>
+        <button onClick={handleMenuClick}>MENU</button>
+        {
+          setShowLinkWindow &&
+            <div className={styles.linkWindow} ref={linkWindow}>
+            <Link href='/register'>
+              <span className={styles.linkText}>Register</span>
+            </Link>
+            <Link href='/login'>
+              <span className={styles.linkText}>Login</span>
+            </Link>              
+            <Link href='/about'>
+              <span className={styles.linkText}>About</span>
+            </Link>              
+          </div>
+        }
       </div>
     </div>
   );
