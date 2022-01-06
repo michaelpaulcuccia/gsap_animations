@@ -11,12 +11,18 @@ export default function Home() {
 
   //REFS
   const linkWindow = useRef();
+  const hamburger = useRef();
 
   //LINK WINDOW ANIMATION
   const tlOne = gsap.timeline({
     defaults: {
       duration: 1.5,
       ease: "power2.out"
+    },
+  });
+  const tlTwo = gsap.timeline({
+    defaults: {
+      duration: .5,
     },
   });
 
@@ -34,6 +40,15 @@ export default function Home() {
             x: 0,
           }
         );
+        tlTwo.fromTo(
+          hamburger.current,
+          {
+            x: 0
+          },
+          {
+            x: -400
+          }
+        );
         setShowLinkWindow(true)
     } else {
       tlOne.fromTo(
@@ -45,6 +60,15 @@ export default function Home() {
         {
           opacity: 0,
           x: 250,
+        }
+      );
+      tlTwo.fromTo(
+        hamburger.current,
+        {
+          x: -400
+        },
+        {
+          x: 0
         }
       );
       setShowLinkWindow(false);
@@ -59,8 +83,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.wrapper}>
+        <div className={styles.hamburger} onClick={handleMenuClick} ref={hamburger}></div>
         <div className={styles.logoContainer}></div>
-        <button onClick={handleMenuClick}>MENU</button>
             {/* LINK WINDOW OPACITY: 0 */}
             <div className={styles.linkWindow} ref={linkWindow}>
             <Link href='/register'>

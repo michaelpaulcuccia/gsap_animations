@@ -115,7 +115,7 @@ export default function RegComp() {
                 {top: "0%"}
             );
             tlTwo.to(checkboxLabel.current, 
-                {color: '#6391e8'}
+                {color: '#007AB3'}
             );
             setCheckboxClicked(true);
             setSendPromotions(true);
@@ -167,16 +167,6 @@ export default function RegComp() {
         }
         
     }
-
-    //useEffect(() => {
-        // gsap.set('.eyes', 
-        //     {transformOrigin: 'center'}
-        // );
-        // gsap.fromTo('.eyes', 
-        //     {scaleY: 1},
-        //     {scaleY: .1, repeat: -1, yoyo: true, repeatDelay: 1.5, ease: "Power2.easeOut"}
-        // );
-    //})
             
     return (
         <div className={styles.wrapper}>
