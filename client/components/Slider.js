@@ -3,8 +3,12 @@ import Link from 'next/link';
 import { gsap } from "gsap";
 import styles from '../styles/Slider.module.css';
 
-export default function Slider() {
+export default function Slider({ path }) {
 
+  //REMOVE CURRENT PAGE (path) FROM LINK OUTPUT
+  const paths = ['home', 'register', 'login', 'about'];
+  const pathFilter = paths.filter(items => items !== path);
+  
   //STATE
   const [showLinkWindow, setShowLinkWindow] = useState(false);
 
@@ -81,18 +85,13 @@ export default function Slider() {
                 <div className={styles.logoContainer}></div>
                 {/* LINK WINDOW OPACITY: 0 */}
                 <div className={styles.linkWindow} ref={linkWindow}>
-                  <Link href='/home'>
-                    <span className={styles.linkText}>Home</span>
-                  </Link>
-                  <Link href='/register'>
-                    <span className={styles.linkText}>Register</span>
-                  </Link>
-                  <Link href='/login'>
-                    <span className={styles.linkText}>Login</span>
-                  </Link>              
-                  <Link href='/about'>
-                    <span className={styles.linkText}>About</span>
-                  </Link>              
+                  {
+                    pathFilter.map((item, i) => (
+                      <Link href={`/${item}`} key={i}>
+                        <span className={styles.linkText}>{item.toUpperCase()}</span>
+                    </Link>
+                    ))
+                  }            
                 </div>
             </div>
         </div>

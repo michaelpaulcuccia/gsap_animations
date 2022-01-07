@@ -1,9 +1,14 @@
 import React from "react";
 import Head from "next/head";
+import { useRouter } from 'next/router';
 import Slider from "../components/Slider";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+
+  const router = useRouter();
+  const path = router.pathname;
+  const cleanPath = path.substring(1);
 
   return (
     <div>
@@ -13,7 +18,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.wrapper}>
-      <Slider />
+      <Slider path={cleanPath} />
         <div className={styles.logo}></div>
       </div>
 
