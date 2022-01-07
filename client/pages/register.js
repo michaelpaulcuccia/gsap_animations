@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Slider from '../components/Slider';
 import RegComp from '../components/RegComp';
 
-export default function testpage() {
+export default function Register() {
 
   const router = useRouter();
   const path = router.pathname;

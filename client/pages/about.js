@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from '../styles/About.module.css';
 import Slider from '../components/Slider';
 
-export default function about() {
+export default function About() {
 
     const router = useRouter();
     const path = router.pathname;

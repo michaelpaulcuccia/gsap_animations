@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from '../styles/Login.module.css';
 import Slider from '../components/Slider';
 
-export default function login() {
+export default function Login() {
 
     const router = useRouter();
     const path = router.pathname;
