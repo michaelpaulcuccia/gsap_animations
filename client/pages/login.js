@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/Login.module.css';
 import Slider from '../components/Slider';
+import LoginComp from '../components/LoginComp';
 
 export default function Login() {
 
@@ -12,6 +13,7 @@ export default function Login() {
     return (
         <div className={styles.wrapper}>
             <Slider path={cleanPath}/>
+            <LoginComp />
         </div>
     )
 }

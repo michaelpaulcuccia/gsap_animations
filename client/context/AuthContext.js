@@ -19,8 +19,8 @@ export const AuthProvider = ({ children }) => {
     };
 
     //login user
-    const login = async ({ email, password }) => {
-        console.log(email, password);
+    const login = async ({ username, password }) => {
+        console.log(username, password);
     };
 
     //logout user

@@ -1,0 +1,117 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(90deg, #007AB3, #b3e7ff);
+  }
+  
+  .form {
+    min-height: 30vh;
+    width: 40vw;
+    background-color: #fff;
+    color: #777474;
+    border-radius: 2rem;
+    padding: 3rem 5rem;
+    position: relative;
+    display: flex;
+  }
+  
+  .title {
+    color: #007AB3;
+  }
+  
+  .contactRight,
+  .contactLeft {
+    flex: 1;
+  }
+  
+  .contactRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .wu {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    height: 125px;
+    width: 125px;
+    background: url('../public/images/wusignory.svg') no-repeat center center / cover;
+  }
+  
+  /* on top of input-container */
+  .input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    border: none;
+    outline: none;
+    color: #777474;
+    font-size: .7rem;
+  }
+  
+  .inputContainer {
+    position: relative;
+  }
+  
+  /* on top of input */
+  .placeholder {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+    padding: 0.3rem 0;
+    font-size: 0.7rem;
+    opacity: 0.6;
+    /* modify for animation */
+    transform-origin: left;
+  }
+  
+  .lineSvg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: visible;
+    opacity: .8;
+  }
+    
+  .button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 0.6rem;
+    background-color: #007AB3;
+    color: #fff;
+    border-radius: 0.2rem;
+    border-style: none;
+    padding: 0.5rem 2.5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    align-self: flex-start;
+  }
+  
+  
+  @media (max-width: 812px) {
+    .form {
+      width: 90vw;
+      min-height: 80vh;
+      flex-direction: column;
+      padding: 8rem 3rem;
+    }
+  
+    .lineSvg {
+      width: 100%;
+    }
+  
+    .submitted {
+      left: 75px;
+    }
+  
+    .character {
+      transform: scale(.4);
+      left: 120px;
+      bottom: -110px;
+    }
+  
+  }
