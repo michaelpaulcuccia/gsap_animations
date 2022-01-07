@@ -1,79 +1,9 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import Head from "next/head";
-import Link from 'next/link';
-import { gsap } from "gsap";
+import Slider from "../components/Slider";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-
-  //STATE
-  const [showLinkWindow, setShowLinkWindow] = useState(false);
-
-  //REFS
-  const linkWindow = useRef();
-  const hamburger = useRef();
-
-  //LINK WINDOW ANIMATION
-  const tlOne = gsap.timeline({
-    defaults: {
-      duration: 1.5,
-      ease: "power2.out"
-    },
-  });
-  const tlTwo = gsap.timeline({
-    defaults: {
-      duration: .5,
-    },
-  });
-
-  const handleMenuClick = () => {
-    console.log('click')
-    if(!showLinkWindow) {
-        tlOne.fromTo(
-          linkWindow.current,
-          {
-            opacity: 0,
-            x: 250,
-          },
-          {
-            opacity: 1,
-            x: 0,
-          }
-        );
-        tlTwo.fromTo(
-          hamburger.current,
-          {
-            x: 0
-          },
-          {
-            x: -400
-          }
-        );
-        setShowLinkWindow(true)
-    } else {
-      tlOne.fromTo(
-        linkWindow.current,
-        {
-          opacity: 1,
-          x: 0,
-        },
-        {
-          opacity: 0,
-          x: 250,
-        }
-      );
-      tlTwo.fromTo(
-        hamburger.current,
-        {
-          x: -400
-        },
-        {
-          x: 0
-        }
-      );
-      setShowLinkWindow(false);
-    }
-  }
 
   return (
     <div>
@@ -83,21 +13,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.wrapper}>
-        <div className={styles.hamburger} onClick={handleMenuClick} ref={hamburger}></div>
-        <div className={styles.logoContainer}></div>
-            {/* LINK WINDOW OPACITY: 0 */}
-            <div className={styles.linkWindow} ref={linkWindow}>
-            <Link href='/register'>
-              <span className={styles.linkText}>Register</span>
-            </Link>
-            <Link href='/login'>
-              <span className={styles.linkText}>Login</span>
-            </Link>              
-            <Link href='/about'>
-              <span className={styles.linkText}>About</span>
-            </Link>              
-          </div>
+      <Slider />
+        <div className={styles.logo}></div>
       </div>
+
     </div>
   );
 }

@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import styles from '../styles/Login.module.css';
+import Slider from '../components/Slider';
 
 export default function login() {
     return (
-        <div>
-            COMING SOON!
+        <div className={styles.wrapper}>
+            <Slider />
         </div>
     )
 }

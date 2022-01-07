@@ -1,0 +1,38 @@
+.hamburger {
+  background: url('../public/images/hamburgerImage.svg') no-repeat center center / cover;
+  height: 75px;
+  width: 75px;
+  position: absolute;
+  top: 35px;
+  right: 50px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.logoContainer {
+  height: 40%;
+  width: 40%;
+  background: url('../public/images/wusignory.svg') no-repeat center center / cover;
+}
+
+.linkWindow {
+  height: 100vh;
+  width: 20vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #007AB3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+
+    
+.linkText {
+  cursor: pointer;
+  font-size: 30px;
+  color: #fff;
+  padding: 35px 0;
+}
