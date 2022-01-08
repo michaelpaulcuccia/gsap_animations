@@ -77,6 +77,8 @@ export default function Slider({ path }) {
     }
   };
 
+  //updated
+
   return (
     <div>
       <div>
