@@ -1,14 +1,13 @@
-import React, { useState, useRef } from 'react';
-import Link from 'next/link';
+import React, { useState, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
-import styles from '../styles/Slider.module.css';
+import styles from "../styles/Slider.module.css";
 
 export default function Slider({ path }) {
-
   //REMOVE CURRENT PAGE (path) FROM LINK OUTPUT
-  const paths = ['home', 'register', 'login', 'about'];
-  const pathFilter = paths.filter(items => items !== path);
-  
+  const paths = ["home", "register", "login", "about"];
+  const pathFilter = paths.filter((items) => items !== path);
+
   //STATE
   const [showLinkWindow, setShowLinkWindow] = useState(false);
 
@@ -20,39 +19,39 @@ export default function Slider({ path }) {
   const tlOne = gsap.timeline({
     defaults: {
       duration: 1.5,
-      ease: "power2.out"
+      ease: "power2.out",
     },
   });
   const tlTwo = gsap.timeline({
     defaults: {
-      duration: .5,
+      duration: 0.5,
     },
   });
 
   const handleMenuClick = () => {
-    console.log('click')
-    if(!showLinkWindow) {
-        tlOne.fromTo(
-          linkWindow.current,
-          {
-            opacity: 0,
-            x: 300,
-          },
-          {
-            opacity: 1,
-            x: 0,
-          }
-        );
-        tlTwo.fromTo(
-          hamburger.current,
-          {
-            x: 0
-          },
-          {
-            x: -300
-          }
-        );
-        setShowLinkWindow(true)
+    console.log("click");
+    if (!showLinkWindow) {
+      tlOne.fromTo(
+        linkWindow.current,
+        {
+          opacity: 0,
+          x: 300,
+        },
+        {
+          opacity: 1,
+          x: 0,
+        }
+      );
+      tlTwo.fromTo(
+        hamburger.current,
+        {
+          x: 0,
+        },
+        {
+          x: -300,
+        }
+      );
+      setShowLinkWindow(true);
     } else {
       tlOne.fromTo(
         linkWindow.current,
@@ -68,32 +67,34 @@ export default function Slider({ path }) {
       tlTwo.fromTo(
         hamburger.current,
         {
-          x: -400
+          x: -400,
         },
         {
-          x: 0
+          x: 0,
         }
       );
       setShowLinkWindow(false);
     }
-  }
+  };
 
-    return (
-        <div>
-            <div>
-            <div className={styles.hamburger} onClick={handleMenuClick} ref={hamburger}></div>
-                <div className={styles.logoContainer}></div>
-                {/* LINK WINDOW OPACITY: 0 */}
-                <div className={styles.linkWindow} ref={linkWindow}>
-                  {
-                    pathFilter.map((item, i) => (
-                      <Link href={`/${item}`} key={i}>
-                        <span className={styles.linkText}>{item.toUpperCase()}</span>
-                    </Link>
-                    ))
-                  }            
-                </div>
-            </div>
+  return (
+    <div>
+      <div>
+        <div
+          className={styles.hamburger}
+          onClick={handleMenuClick}
+          ref={hamburger}
+        ></div>
+        <div className={styles.logoContainer}></div>
+        {/* LINK WINDOW OPACITY: 0 */}
+        <div className={styles.linkWindow} ref={linkWindow}>
+          {pathFilter.map((item, i) => (
+            <Link passHref={`/${item}`} key={i}>
+              <span className={styles.linkText}>{item.toUpperCase()}</span>
+            </Link>
+          ))}
         </div>
-    )
+      </div>
+    </div>
+  );
 }
