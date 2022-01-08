@@ -91,7 +91,7 @@ export default function Slider({ path }) {
         {/* LINK WINDOW OPACITY: 0 */}
         <div className={styles.linkWindow} ref={linkWindow}>
           {pathFilter.map((item, i) => (
-            <Link passHref={`/${item}`} key={i}>
+            <Link href={`/${item}`} key={i}>
               <span className={styles.linkText}>{item.toUpperCase()}</span>
             </Link>
           ))}
