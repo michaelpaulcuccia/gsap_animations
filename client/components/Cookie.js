@@ -89,7 +89,7 @@ export default function Cookie() {
     });
     //TIMEOUT NECESSARY FOR ANIMATIONS
     setTimeout(() => {
-      router.push("/Home");
+      router.push("/home");
     }, 1500);
   };
 
