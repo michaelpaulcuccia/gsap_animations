@@ -1,10 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { gsap } from "gsap";
 import styles from "../styles/Cookie.module.css";
-//import cookie from "../public/images/cookie.svg";
-//import wucookie from "../public/images/wucookie.svg";
 
 export default function Cookie() {
   //REFS
@@ -92,14 +89,13 @@ export default function Cookie() {
     });
     //TIMEOUT NECESSARY FOR ANIMATIONS
     setTimeout(() => {
-      router.push("/home");
-    }, 2700);
+      router.push("/Home");
+    }, 1500);
   };
 
   return (
     <div className={styles.wrapper} ref={wrapper}>
       <div className={styles.cookiecontainer} ref={cookieContainer}>
-        {/* <Image src={wucookie} width={150} height={150} className="cookie" /> */}
         <svg
           width="153"
           height="155"

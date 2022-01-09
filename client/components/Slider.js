@@ -5,7 +5,7 @@ import styles from "../styles/Slider.module.css";
 
 export default function Slider({ path }) {
   //REMOVE CURRENT PAGE (path) FROM LINK OUTPUT
-  const paths = ["home", "register", "login", "about"];
+  const paths = ["Home", "Register", "Login", "About"];
   const pathFilter = paths.filter((items) => items !== path);
 
   //STATE
