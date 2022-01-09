@@ -3,9 +3,7 @@ import dbConnect from "../utils/dbConnect";
 import User from "../models/User";
 import Cookie from "../components/Cookie.js";
 
-export default function Home({ users }) {
-  console.log(users);
-
+export default function Home() {
   return (
     <div>
       <Head>
@@ -21,8 +19,8 @@ export default function Home({ users }) {
 export async function getServerSideProps() {
   await dbConnect();
 
-  const users = await User.find({});
-  console.log(users);
+  const res = await User.find({});
+  const users = JSON.stringify(res);
 
   return {
     props: {
