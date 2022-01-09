@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
     if (!res.ok) {
       throw new Error(res.status);
     } else {
-      console.log(res.status(200));
+      res.status(200);
     }
   };
 

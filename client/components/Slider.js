@@ -29,7 +29,6 @@ export default function Slider({ path }) {
   });
 
   const handleMenuClick = () => {
-    console.log("click");
     if (!showLinkWindow) {
       tlOne.fromTo(
         linkWindow.current,
