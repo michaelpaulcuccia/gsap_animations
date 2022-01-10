@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from "../styles/LoginComp.module.css";
 
-export default function LoginComp() {
+export default function LoginComp({ allusers }) {
 
     const router = useRouter();
 
@@ -93,15 +93,21 @@ export default function LoginComp() {
             toast.error('Please complete form')
             return;
         } else {
-            //Create User Object
-            const user = {username, password}
-            //Pass Oject to Auth
-            login(user);
-            //Clear State
-            setUsername('');
-            setPassword('');
-            //REDIRECT HOME
-            router.push('/home');
+            //check if user exists
+            const userExists = allusers.filter(user => user.username === username);
+            if(userExists.length > 0) {
+                //Create User Object
+                const user = {username, password}
+                //Pass Oject to Auth
+                login(user);
+                //Clear State
+                setUsername('');
+                setPassword('');
+                //REDIRECT HOME
+                router.push('/home');
+            } else {
+                toast.error('User does not exist')
+            }
         }
         
     }

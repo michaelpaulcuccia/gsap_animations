@@ -5,19 +5,16 @@ import Slider from '../components/Slider';
 import LoginComp from '../components/LoginComp';
 
 export default function Login({allusers}) {
+  const router = useRouter();
+  const path = router.pathname;
+  const cleanPath = path.substring(1);
 
-  console.log(allusers)
-
-    const router = useRouter();
-    const path = router.pathname;
-    const cleanPath = path.substring(1);
-
-    return (
-        <div className={styles.wrapper}>
-            <Slider path={cleanPath}/>
-            <LoginComp />
-        </div>
-    )
+  return (
+    <div className={styles.wrapper}>
+      <Slider path={cleanPath}/>
+      <LoginComp allusers={allusers}/>
+    </div>
+  )
 }
 
 export async function getStaticProps() {
