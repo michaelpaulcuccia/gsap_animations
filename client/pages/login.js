@@ -19,9 +19,7 @@ export default function Login({allusers}) {
 
 export async function getStaticProps() {
 
-  //process.env.NEXT_PUBLIC_FRONTEND_URL || 'http://localhost:3000'
-
-  const res = await fetch(process.env.NEXT_PUBLIC_FRONTEND_URL ||'http://localhost:3000/api/allusers');
+  const res = await fetch('http://localhost:3000/api/allusers');
   const allusers = await res.json();
 
   return {
