@@ -15,14 +15,15 @@ export default function About() {
       <div className={styles.content}>
         <h2>Hello! My name is Michael-Paul Cuccia</h2>
         <p>
-          I am a Frontend Engineer at{" "}
+          I am a Junior Frontend Engineer at {" "}
           <Link href="https://www.designory.com/">designory.</Link>
         </p>
         <p>
           this <strong>desktop</strong> application is built with Next.js
         </p>
+        <p>MongoDB Database</p>
         <p>animations by GreenSock (gsap)</p>
-        <p>cookie, logo, and hamburger button were made</p>
+        <p>cookie, logo, and hamburger svgs were made</p>
         <p>using Figma</p>
         <p>otherwise, open source</p>
       </div>

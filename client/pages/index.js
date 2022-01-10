@@ -22,6 +22,8 @@ export async function getServerSideProps() {
   const res = await User.find({});
   const users = JSON.stringify(res);
 
+  console.log(users)
+
   return {
     props: {
       users,

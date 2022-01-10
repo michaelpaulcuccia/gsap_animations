@@ -6,6 +6,8 @@ const AuthContext = createContext();
 
 //provider to wrap application
 export const AuthProvider = ({ children }) => {
+
+  //constants
   const [user, setUser] = useState(null);
   const router = useRouter();
 
