@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   const register = async ({ username, email, password, sendPromotions }) => {
     //create new user object
     const user = { username, email, password, sendPromotions };
-    const res = await fetch("/api/users", {
+    const res = await fetch("/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,8 +24,6 @@ export const AuthProvider = ({ children }) => {
     });
     if (!res.ok) {
       throw new Error(res.status);
-    } else {
-      res.status(200);
     }
   };
 
