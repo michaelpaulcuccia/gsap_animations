@@ -5,7 +5,8 @@ export default async (req, res) => {
   await dbConnect();
     
   const data = await User.find({});
-  res.status(201).json(data);
+  //res.status(201).json(data);
+  res.status(200).json(JSON.stringify(data))
  
 }
 
