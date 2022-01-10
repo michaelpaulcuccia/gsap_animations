@@ -1,6 +1,4 @@
 import Head from "next/head";
-import dbConnect from "../utils/dbConnect";
-import User from "../models/User";
 import Cookie from "../components/Cookie.js";
 
 export default function Home() {
@@ -15,19 +13,4 @@ export default function Home() {
       <Cookie />
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  await dbConnect();
-
-  const res = await User.find({});
-  const users = JSON.stringify(res);
-
-  console.log(users)
-
-  return {
-    props: {
-      users,
-    },
-  };
 }
