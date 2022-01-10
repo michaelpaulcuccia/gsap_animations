@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { createContext, useState } from "react";
+//import { useRouter } from "next/router";
 
 //create context
 const AuthContext = createContext();
@@ -7,9 +7,9 @@ const AuthContext = createContext();
 //provider to wrap application
 export const AuthProvider = ({ children }) => {
 
-  //constants
-  const [user, setUser] = useState(null);
-  const router = useRouter();
+   //constants
+   const [user, setUser] = useState(null);
+   //const router = useRouter();
 
   //register user
   const register = async ({ username, email, password, sendPromotions }) => {

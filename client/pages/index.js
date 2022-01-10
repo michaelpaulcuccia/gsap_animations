@@ -4,6 +4,7 @@ import User from "../models/User";
 import Cookie from "../components/Cookie.js";
 
 export default function Home() {
+
   return (
     <div>
       <Head>
