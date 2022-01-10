@@ -18,12 +18,7 @@ export default function Login({allusers}) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://nextdesignsystem.vercel.app/api/allusers', {
-    headers: {
-      Accept: 'application/json, text/plain, */*',
-      'User-Agent': '*',
-    },
-  });
+  const res = await fetch('http://localhost:3000/api/allusers');
   const allusers = await res.json();
 
   return {
