@@ -16,6 +16,8 @@
 }
 
 .linkWindow {
+  /* height: 100%;
+  width: 20%; */
   height: 100vh;
   width: 20vw;
   position: absolute;

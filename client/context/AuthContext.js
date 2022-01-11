@@ -37,7 +37,6 @@ export const AuthProvider = ({ children }) => {
 
   //logout user
   const logout = async () => {
-    console.log('logout fired from AuthContext')
     setLoggedIn(null)
   };
 

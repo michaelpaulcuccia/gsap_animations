@@ -2,14 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     font-family: "Poppins", sans-serif;
     background: linear-gradient(90deg, #007AB3, #b3e7ff);
   }
   
   .form {
-    min-height: 30vh;
-    width: 40vw;
+    min-height: 30%;
+    width: 40%;
     background-color: #fff;
     color: #777474;
     border-radius: 2rem;
@@ -94,8 +94,8 @@
   
   @media (max-width: 812px) {
     .form {
-      width: 90vw;
-      min-height: 80vh;
+      width: 90%;
+      min-height: 80%;
       flex-direction: column;
       padding: 8rem 3rem;
     }
