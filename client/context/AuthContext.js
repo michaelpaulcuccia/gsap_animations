@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-//import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 //create context
 const AuthContext = createContext();
@@ -9,7 +9,8 @@ export const AuthProvider = ({ children }) => {
 
    //constants
    const [user, setUser] = useState(null);
-   //const router = useRouter();
+   const [loggedIn, setLoggedIn] = useState(null);
+   const router = useRouter();
 
   //register user
   const register = async ({ username, email, password, sendPromotions }) => {
@@ -29,21 +30,20 @@ export const AuthProvider = ({ children }) => {
 
   //login user
   const login = async ({ username, password }) => {
-    console.log(username, password);
+    setUser(username);
+    setLoggedIn(true);
+    router.push('/home');
   };
 
   //logout user
   const logout = async () => {
     console.log("logout");
-  };
-
-  //check if user is logged in to persist
-  const checkUserLoggedIn = async () => {
-    console.log("check");
+    //TO DO
+    //setLoggedIn(null)
   };
 
   return (
-    <AuthContext.Provider value={{ user, register, login, logout }}>
+    <AuthContext.Provider value={{ user, loggedIn, register, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

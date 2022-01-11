@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
+import AuthContext from "../context/AuthContext";
 import Link from "next/link";
 import { gsap } from "gsap";
 import styles from "../styles/Slider.module.css";
@@ -14,6 +15,9 @@ export default function Slider({ path }) {
   //REFS
   const linkWindow = useRef();
   const hamburger = useRef();
+
+  //AUTH CONTEXT
+  const { loggedIn } = useContext(AuthContext);
 
   //LINK WINDOW ANIMATION
   const tlOne = gsap.timeline({
@@ -94,6 +98,9 @@ export default function Slider({ path }) {
               <span className={styles.linkText}>{item.toUpperCase()}</span>
             </Link>
           ))}
+          {
+            loggedIn && <h1>LOGGED IN!!!</h1>
+          }
         </div>
       </div>
     </div>

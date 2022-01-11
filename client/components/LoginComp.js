@@ -1,5 +1,4 @@
 import React, { useState, useRef, useContext } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { gsap } from "gsap";
 import AuthContext from '../context/AuthContext';
@@ -8,8 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import styles from "../styles/LoginComp.module.css";
 
 export default function LoginComp({ allusers }) {
-
-    const router = useRouter();
 
     const [nameState, setNameState] = useState(false);
     const [passwordState, setPasswordState] = useState(false);
@@ -89,7 +86,10 @@ export default function LoginComp({ allusers }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         //Field Validations
-        if (username === '' || password === ''){   
+        if (username === '' || password === ''){  
+            //Clear State
+            setUsername('');
+            setPassword(''); 
             toast.error('Please complete form')
             return;
         } else {
@@ -103,8 +103,6 @@ export default function LoginComp({ allusers }) {
                 //Clear State
                 setUsername('');
                 setPassword('');
-                //REDIRECT HOME
-                router.push('/home');
             } else {
                 toast.error('User does not exist')
             }
