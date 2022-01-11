@@ -17,7 +17,7 @@ export default function Slider({ path }) {
   const hamburger = useRef();
 
   //AUTH CONTEXT
-  const { loggedIn } = useContext(AuthContext);
+  const { loggedIn, logout } = useContext(AuthContext);
 
   //LINK WINDOW ANIMATION
   const tlOne = gsap.timeline({
@@ -99,7 +99,7 @@ export default function Slider({ path }) {
             </Link>
           ))}
           {
-            loggedIn && <h1>LOGGED IN!!!</h1>
+            loggedIn && <span className={styles.linkText} onClick={() => logout()}>LOGOUT</span>
           }
         </div>
       </div>
