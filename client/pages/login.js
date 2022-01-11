@@ -19,8 +19,8 @@ export default function Login({allusers}) {
 
 export async function getServerSideProps() {
 
-  //'http://localhost:3000/api/allusers'
-  //process.env.NEXT_PUBLIC_FRONTEND_URL
+  //'http://localhost:3000/api/allusers' //getStaticProps
+  //process.env.NEXT_PUBLIC_FRONTEND_URL //getServerSideProps
   const res = await fetch(process.env.NEXT_PUBLIC_FRONTEND_URL);
   const allusers = await res.json();
 
