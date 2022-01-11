@@ -17,7 +17,7 @@ export default function Login({allusers}) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
   //'http://localhost:3000/api/allusers'
   //process.env.NEXT_PUBLIC_FRONTEND_URL
