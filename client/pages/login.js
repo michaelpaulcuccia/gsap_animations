@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import styles from '../styles/Login.module.css';
 import Slider from '../components/Slider';
 import LoginComp from '../components/LoginComp';
+import dbConnect from '../utils/dbConnect';
+import User from '../models/User';
 
 export default function Login({allusers}) {
   const router = useRouter();
@@ -17,13 +19,21 @@ export default function Login({allusers}) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
-  //'http://localhost:3000/api/allusers' //getStaticProps
-  //process.env.NEXT_PUBLIC_FRONTEND_URL //getServerSideProps
-  const res = await fetch(process.env.NEXT_PUBLIC_FRONTEND_URL);
-  const allusers = await res.json();
+  await dbConnect();  
+  const res = await User.find({});
 
+  //deals with nonsense 
+  let allusers =[]
+  res.forEach(item => {
+    let obj = {}
+    obj.username = item.username
+    obj.password = item.password
+    obj.email = item.email
+    allusers.push(obj)
+  })
+  
   return {
     props: {
       allusers,
