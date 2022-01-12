@@ -22,10 +22,10 @@ export default function About() {
           this <strong>desktop</strong> application is built with Next.js
         </p>
         <p>MongoDB Database</p>
+        <p>React Toastify</p>
         <p>animations by GreenSock (gsap)</p>
         <p>cookie, logo, and hamburger svgs were made</p>
         <p>using Figma</p>
-        <p>otherwise, open source</p>
       </div>
     </div>
   );
