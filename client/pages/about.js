@@ -21,8 +21,7 @@ export default function About() {
         <p>
           this <strong>desktop</strong> application is built with Next.js
         </p>
-        <p>MongoDB Database</p>
-        <p>React Toastify</p>
+        <p>also includes MongoDB, React Toastify</p>
         <p>animations by GreenSock (gsap)</p>
         <p>cookie, logo, and hamburger svgs were made</p>
         <p>using Figma</p>

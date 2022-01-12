@@ -153,8 +153,8 @@
 
 .submitted {
   position: absolute;
-  left: 350px;
-  top: 300px;
+  left: 250px;
+  top: 250px;
   color: #777474;
   font-size: 1rem;
   pointer-events: none;
