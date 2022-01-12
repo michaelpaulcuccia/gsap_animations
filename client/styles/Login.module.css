@@ -1,6 +1,4 @@
 .wrapper {
-    /* hack because of slider */
     height: 100vh;
-    width: 120%;
     background: linear-gradient(90deg, #007AB3, #b3e7ff);
 }

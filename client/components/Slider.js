@@ -90,7 +90,6 @@ export default function Slider({ path }) {
           onClick={handleMenuClick}
           ref={hamburger}
         ></div>
-        <div className={styles.logoContainer}></div>
         {/* LINK WINDOW OPACITY: 0 */}
         <div className={styles.linkWindow} ref={linkWindow}>
           {pathFilter.map((item, i) => (
